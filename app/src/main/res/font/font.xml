@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/cafe24_ssurround"
+        tools:targetApi="o" />
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="300"
+        android:font="@font/kotra_hope"
+        tools:targetApi="o" />
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/nanum_amsterdam"
+        tools:targetApi="o" />
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/nanum_hipi"
+        tools:targetApi="o" />
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/one_mobile_pop"
+        tools:targetApi="o" />
+
+
+</font-family>

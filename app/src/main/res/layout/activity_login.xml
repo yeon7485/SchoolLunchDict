@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_color_background"
+    android:orientation="vertical"
+    tools:context=".LoginActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_book"
+            app:tint="@color/main_color_red"
+            android:layout_marginTop="100dp"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="학 식 백 과"
+            android:textSize="50sp"
+            android:fontFamily="@font/cafe24_ssurround"
+            android:textColor="@color/title_font_color"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+<!-- 이메일 비밀번호 입력 부분-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="이메일"
+            android:textSize="30sp"
+            android:fontFamily="@font/kotra_hope"
+            android:paddingLeft="30dp"
+            android:textColor="@color/title_font_color"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="10dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:hint="이메일을 입력하세요."
+            android:background="@color/white"
+            android:padding="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="비밀번호"
+            android:textSize="30sp"
+            android:fontFamily="@font/kotra_hope"
+            android:paddingLeft="30dp"
+            android:textColor="@color/title_font_color"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="10dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:hint="비밀번호를 입력하세요."
+            android:background="@color/white"
+            android:padding="10dp"/>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/button_round"
+            android:padding="10dp"
+            android:text="로그인"
+            android:textSize="30sp"
+            android:textColor="@color/main_color_background"
+            android:fontFamily="@font/kotra_hope"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>
