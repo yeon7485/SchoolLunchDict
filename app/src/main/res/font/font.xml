@@ -27,6 +27,21 @@
         android:fontWeight="400"
         android:font="@font/one_mobile_pop"
         tools:targetApi="o" />
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/nanum_baeeunhye"
+        tools:targetApi="o" />
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/im_hyemin_bold"
+        tools:targetApi="o" />
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/im_hyemin_regular"
+        tools:targetApi="o" />
 
 
 </font-family>
