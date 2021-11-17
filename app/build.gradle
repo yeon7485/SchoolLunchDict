@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.kplo.schoollunchdict"
-        minSdk 21
+        minSdk 23
         targetSdk 30
         versionCode 1
         versionName "1.0"
@@ -26,17 +26,23 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    compileSdkVersion 30
+    buildToolsVersion '30.0.2'
 }
 
 dependencies {
-
     implementation 'androidx.appcompat:appcompat:1.3.1'
-    implementation 'com.google.firebase:firebase-analytics:20.0.0'
+    implementation 'com.google.firebase:firebase-analytics:19.0.2'
     implementation 'com.google.firebase:firebase-core:20.0.0'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
     implementation 'com.google.firebase:firebase-auth:21.0.1'
-    testImplementation 'junit:junit:4.+'
+    implementation 'com.google.firebase:firebase-database:20.0.2'
+    implementation 'com.google.android.gms:play-services-ads:20.4.0'
+    testImplementation 'junit:junit:'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    //파이어베이스 종속성 추가
+    implementation platform('com.google.firebase:firebase-bom:28.4.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
 }

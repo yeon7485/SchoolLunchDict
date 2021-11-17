@@ -1,10 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_color_background"
-    tools:context=".HomeActivity">
+    tools:context=".HomeActivity"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:gravity="center"
+        android:weightSum="10"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:padding="8dp"
+            android:layout_weight="1.5"
+            android:src="@drawable/ic_home"
+            app:tint="@color/title_font_color" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="7"
+            android:layout_gravity="center"
+            android:paddingTop="5dp"
+            android:gravity="center"
+            android:fontFamily="@font/cafe24_ssurround"
+            android:text="학 식 백 과"
+            android:textColor="@color/title_font_color"
+            android:textSize="40sp" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:padding="8dp"
+            android:layout_weight="1.5"
+            android:src="@drawable/ic_setting"
+            app:tint="@color/title_font_color" />
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/title_font_color"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/ic_spoon"
+            android:layout_marginTop="40dp"
+            android:layout_gravity="center"
+            app:tint="@color/main_color_orange" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:fontFamily="@font/kotra_hope"
+            android:text="오늘의 메뉴는?"
+            android:textColor="@color/title_font_color"
+            android:textSize="50sp" />
+
+    </LinearLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:stretchColumns="0, 1">
+        <TableRow>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:src="@drawable/ic_spoon"
+                    android:layout_marginTop="40dp"
+                    android:layout_gravity="center"
+                    app:tint="@color/main_color_yellow" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:fontFamily="@font/kotra_hope"
+                    android:text="메뉴 평가"
+                    android:textColor="@color/title_font_color"
+                    android:textSize="40sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:src="@drawable/ic_spoon"
+                    android:layout_marginTop="40dp"
+                    android:layout_gravity="center"
+                    app:tint="@color/main_color_yellow" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:fontFamily="@font/kotra_hope"
+                    android:text="메뉴 랭킹"
+                    android:textColor="@color/title_font_color"
+                    android:textSize="40sp" />
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:src="@drawable/ic_spoon"
+                    android:layout_marginTop="40dp"
+                    android:layout_gravity="center"
+                    app:tint="@color/main_color_yellow" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:fontFamily="@font/kotra_hope"
+                    android:text="게시판"
+                    android:textColor="@color/title_font_color"
+                    android:textSize="40sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:src="@drawable/ic_spoon"
+                    android:layout_marginTop="40dp"
+                    android:layout_gravity="center"
+                    app:tint="@color/main_color_yellow" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:fontFamily="@font/kotra_hope"
+                    android:text="내 정보"
+                    android:textColor="@color/title_font_color"
+                    android:textSize="40sp" />
+            </LinearLayout>
+
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>

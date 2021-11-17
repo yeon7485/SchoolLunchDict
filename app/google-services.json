@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1029497533261",
+    "firebase_url": "https://schoollunchdict-default-rtdb.firebaseio.com",
+    "project_id": "schoollunchdict",
+    "storage_bucket": "schoollunchdict.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1029497533261:android:674755cbe30a100f507d04",
+        "android_client_info": {
+          "package_name": "com.kplo.schoollunchdict"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1029497533261-mgaib992ojd8mn7hphqessudkqgt9ii3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMhUxx7mv7gX7gARsr0aUSU3kB9MwiyLU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1029497533261-mgaib992ojd8mn7hphqessudkqgt9ii3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
