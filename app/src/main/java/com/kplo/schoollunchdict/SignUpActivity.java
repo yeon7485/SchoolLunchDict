@@ -82,8 +82,8 @@ public class SignUpActivity extends AppCompatActivity {
                             String nickname = email;
 
                             //해쉬맵 테이블을 파이어베이스 데이터베이스에 저장
-                            HashMap<Object,String> hashMap = new HashMap<>();
-                            hashMap.put("uid",uid);
+                            HashMap<Object, String> hashMap = new HashMap<>();
+                            hashMap.put("uid", uid);
                             hashMap.put("email", email);
                             hashMap.put("password", password);
                             hashMap.put("nickname", nickname);
@@ -91,6 +91,7 @@ public class SignUpActivity extends AppCompatActivity {
                             database.child(uid).setValue(hashMap);
 
                             Toast.makeText(SignUpActivity.this, "회원가입 성공", Toast.LENGTH_SHORT).show();
+                            finish();
                             Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
                             startActivity(intent);
                         } else {

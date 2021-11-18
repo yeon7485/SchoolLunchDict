@@ -72,6 +72,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                     break;
                 case R.id.login_btn_signUp:
+                    finish();
                     Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
                     startActivity(intent);
                     break;
