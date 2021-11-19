@@ -56,66 +56,116 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/home_btn_menu"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+
+        <TextView
+            android:id="@+id/user_tv_nickname"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            android:src="@drawable/ic_user"
-            app:tint="@color/main_color_orange" />
+            android:fontFamily="@font/kotra_hope"
+            android:gravity="center"
+            android:text="wsx4379@naver.com"
+            android:textColor="@color/title_font_color"
+            android:textSize="45sp" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/user_tv_email"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/kotra_hope"
+            android:gravity="center"
+            android:text="이메일: wsx4379@naver.com"
+            android:textColor="@color/title_font_color"
+            android:textSize="30sp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp">
+
+        <TextView
+            android:id="@+id/user_btn_change_nick"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="5dp"
+            android:background="@drawable/button_border"
             android:fontFamily="@font/kotra_hope"
             android:gravity="center"
-            android:text="닉네임"
+            android:paddingVertical="20dp"
+            android:text="닉네임 변경"
             android:textColor="@color/title_font_color"
-            android:textSize="50sp" />
-
+            android:textSize="40sp" />
     </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
+        android:layout_height="wrap_content">
 
         <TextView
+            android:id="@+id/user_btn_evaluation"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="5dp"
+            android:background="@drawable/button_border"
             android:fontFamily="@font/kotra_hope"
+            android:gravity="center"
+            android:paddingVertical="20dp"
             android:text="평가한 메뉴 확인"
-            android:paddingVertical="30dp"
-            android:gravity="center"
             android:textColor="@color/title_font_color"
-            android:textSize="45sp" />
+            android:textSize="40sp" />
     </LinearLayout>
-
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
+        android:layout_height="wrap_content">
 
         <TextView
+            android:id="@+id/user_btn_favorites"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="5dp"
+            android:background="@drawable/button_border"
             android:fontFamily="@font/kotra_hope"
-            android:text="즐겨찾기한 메뉴"
-            android:paddingVertical="30dp"
             android:gravity="center"
+            android:paddingVertical="20dp"
+            android:text="즐겨찾기한 메뉴"
             android:textColor="@color/title_font_color"
-            android:textSize="45sp" />
+            android:textSize="40sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/user_btn_logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="5dp"
+            android:background="@drawable/button_border"
+            android:fontFamily="@font/kotra_hope"
+            android:gravity="center"
+            android:paddingVertical="20dp"
+            android:text="로그아웃"
+            android:textColor="@color/title_font_color"
+            android:textSize="40sp" />
     </LinearLayout>
 
 </LinearLayout>
