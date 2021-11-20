@@ -39,15 +39,16 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {
+        Intent intent;
         switch (v.getId()) {
             case R.id.home_btn:
                 break;
             case R.id.setting_btn:
-
+                intent = new Intent(this, SettingActivity.class);
+                startActivity(intent);
                 break;
             case R.id.home_btn_menu:
-                finish();
-                Intent intent = new Intent(this, MenuActivity.class);
+                intent = new Intent(this, MenuActivity.class);
                 startActivity(intent);
                 break;
             case R.id.home_btn_evaluation:
@@ -57,6 +58,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.home_btn_community:
                 break;
             case R.id.home_btn_user:
+                intent = new Intent(this, UserActivity.class);
+                startActivity(intent);
                 break;
         }
     }

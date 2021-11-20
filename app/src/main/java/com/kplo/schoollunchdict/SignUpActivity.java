@@ -26,7 +26,7 @@ import java.util.HashMap;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    private EditText signUp_et_email, signUp_et_password;
+    private EditText signUp_et_email, signUp_et_password1, signUp_et_password2;
     private TextView signUp_tv_error;
     private Button signUp_btn;
 
@@ -40,7 +40,8 @@ public class SignUpActivity extends AppCompatActivity {
 
         // id 연결
         signUp_et_email = (EditText) findViewById(R.id.signUp_et_email);
-        signUp_et_password = (EditText) findViewById(R.id.signUp_et_pw);
+        signUp_et_password1 = (EditText) findViewById(R.id.signUp_et_password1);
+        signUp_et_password2 = (EditText) findViewById(R.id.signUp_et_password2);
         signUp_tv_error = (TextView) findViewById(R.id.signUp_tv_error);
         signUp_btn = (Button) findViewById(R.id.signUp_btn);
 
@@ -54,13 +55,11 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String email = signUp_et_email.getText().toString().trim();
-                String password = signUp_et_password.getText().toString().trim();
-                if (email.equals("") || !email.contains("@")) {
-                    signUp_tv_error.setText("이메일을 다시 입력하세요!");
-                } else if (password.equals("")) {
-                    signUp_tv_error.setText("비밀번호를 다시 입력하세요!");
-                } else {
-                    createUser(email, password);
+                String password1 = signUp_et_password1.getText().toString().trim();
+                String password2 = signUp_et_password2.getText().toString().trim();
+
+                if (checkEmailAndPassword(email, password1, password2)) {
+                    createUser(email, password1);
                 }
             }
         });
@@ -78,7 +77,7 @@ public class SignUpActivity extends AppCompatActivity {
                             FirebaseUser user = firebaseAuth.getCurrentUser();
                             String uid = user.getUid();
                             String email = user.getEmail();
-                            String password = signUp_et_password.getText().toString().trim();
+                            String password = signUp_et_password1.getText().toString().trim();
                             String nickname = email;
 
                             //해쉬맵 테이블을 파이어베이스 데이터베이스에 저장
@@ -102,5 +101,20 @@ public class SignUpActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    public boolean checkEmailAndPassword(String email, String password1, String password2){
+        boolean check = true;
+        if (email.equals("") || !email.contains("@")) {
+            signUp_tv_error.setText("이메일을 다시 입력하세요!");
+            check = false;
+        } else if (password1.equals("")) {
+            signUp_tv_error.setText("비밀번호를 다시 입력하세요!");
+            check = false;
+        } else if(!password1.equals(password2)){
+            signUp_tv_error.setText("같은 비밀번호를 입력해주세요!");
+            check = false;
+        }
+        return check;
     }
 }

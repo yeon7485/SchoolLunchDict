@@ -92,7 +92,7 @@
         android:layout_marginTop="50dp">
 
         <TextView
-            android:id="@+id/user_btn_change_nick"
+            android:id="@+id/user_btn_edit_profile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -102,7 +102,7 @@
             android:fontFamily="@font/kotra_hope"
             android:gravity="center"
             android:paddingVertical="20dp"
-            android:text="닉네임 변경"
+            android:text="프로필 변경"
             android:textColor="@color/title_font_color"
             android:textSize="40sp" />
     </LinearLayout>

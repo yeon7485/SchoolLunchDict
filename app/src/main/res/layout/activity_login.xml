@@ -112,7 +112,7 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="40dp"
             android:background="@drawable/button_color_pressed"
             android:fontFamily="@font/kotra_hope"
             android:padding="10dp"

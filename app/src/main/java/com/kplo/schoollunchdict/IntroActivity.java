@@ -21,7 +21,7 @@ public class IntroActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        }, 2000);
+        }, 3000);
     }
 
     @Override
