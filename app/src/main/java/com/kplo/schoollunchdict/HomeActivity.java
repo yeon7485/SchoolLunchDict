@@ -35,7 +35,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-
     @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {
@@ -63,4 +62,5 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
+
 }

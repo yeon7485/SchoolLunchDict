@@ -23,6 +23,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -81,13 +82,13 @@ public class SignUpActivity extends AppCompatActivity {
                             String nickname = email;
 
                             //해쉬맵 테이블을 파이어베이스 데이터베이스에 저장
-                            HashMap<Object, String> hashMap = new HashMap<>();
-                            hashMap.put("uid", uid);
-                            hashMap.put("email", email);
-                            hashMap.put("password", password);
-                            hashMap.put("nickname", nickname);
+                            HashMap<String, Object> map = new HashMap<>();
+                            map.put("uid", uid);
+                            map.put("email", email);
+                            map.put("password", password);
+                            map.put("nickname", nickname);
 
-                            database.child(uid).setValue(hashMap);
+                            database.child(uid).setValue(map);
 
                             Toast.makeText(SignUpActivity.this, "회원가입 성공", Toast.LENGTH_SHORT).show();
                             finish();

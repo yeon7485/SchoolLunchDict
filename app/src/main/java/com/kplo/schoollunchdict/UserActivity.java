@@ -56,8 +56,6 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
         user_btn_logout.setOnClickListener(this);
 
 
-
-
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -80,6 +78,7 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.user_btn_edit_profile:
                 intent = new Intent(this, EditProfileActivity.class);
                 startActivity(intent);
+                finish();
                 break;
 
             case R.id.user_btn_evaluation:
