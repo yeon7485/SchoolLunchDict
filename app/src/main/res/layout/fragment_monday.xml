@@ -6,6 +6,7 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/mjd_mon_restaurant1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -16,6 +17,7 @@
         android:textSize="50sp" />
 
     <TextView
+        android:id="@+id/mjd_mon_menu1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -25,17 +27,9 @@
         android:textColor="@color/title_font_color"
         android:textSize="40sp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="5dp"
-        android:fontFamily="@font/kotra_hope"
-        android:text="메뉴"
-        android:textColor="@color/title_font_color"
-        android:textSize="40sp" />
 
     <TextView
+        android:id="@+id/mjd_mon_restaurant2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -46,17 +40,9 @@
         android:textColor="@color/main_color_orange"
         android:textSize="50sp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="5dp"
-        android:fontFamily="@font/kotra_hope"
-        android:text="메뉴"
-        android:textColor="@color/title_font_color"
-        android:textSize="40sp" />
 
     <TextView
+        android:id="@+id/mjd_mon_menu2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

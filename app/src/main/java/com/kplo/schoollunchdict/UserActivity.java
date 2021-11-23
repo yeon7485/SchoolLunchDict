@@ -18,7 +18,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class UserActivity extends AppCompatActivity implements View.OnClickListener{
+public class UserActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView home_btn, setting_btn;
     private TextView user_tv_nickname, user_tv_email;
@@ -62,7 +62,7 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         Intent intent;
-        switch(v.getId()){
+        switch (v.getId()) {
             case R.id.home_btn:
                 intent = new Intent(this, HomeActivity.class);
                 startActivity(intent);
@@ -88,19 +88,22 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.user_btn_logout:
+                firebaseAuth.signOut();
+                intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
+                finish();
                 break;
         }
     }
 
-    public void getProfile(){
+    public void getProfile() {
         String uid = firebaseAuth.getUid();
         database.child(uid).child("nickname").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {
                     Log.e("firebase", "Error getting nickname", task.getException());
-                }
-                else {
+                } else {
                     String nickname = String.valueOf(task.getResult().getValue());
                     user_tv_nickname.setText(nickname);
                 }
@@ -112,8 +115,7 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {
                     Log.e("firebase", "Error getting nickname", task.getException());
-                }
-                else {
+                } else {
                     String email = String.valueOf(task.getResult().getValue());
                     user_tv_email.setText(email);
                 }
