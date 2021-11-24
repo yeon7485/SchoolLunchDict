@@ -96,7 +96,7 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    public void getProfile() {
+    private void getProfile() {
         String uid = firebaseAuth.getUid();
         database.child(uid).child("nickname").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override

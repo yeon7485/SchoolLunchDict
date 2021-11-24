@@ -87,6 +87,7 @@ public class SignUpActivity extends AppCompatActivity {
                             map.put("email", email);
                             map.put("password", password);
                             map.put("nickname", nickname);
+                            map.put("postNum", "0");
 
                             database.child(uid).setValue(map);
 

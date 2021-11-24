@@ -60,7 +60,7 @@
         android:layout_gravity="center">
 
         <EditText
-            android:id="@+id/login_et_email"
+            android:id="@+id/board_et_search"
             android:layout_width="340dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/kotra_hope"
