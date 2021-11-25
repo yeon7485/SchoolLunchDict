@@ -1,13 +1,13 @@
 package com.kplo.schoollunchdict.menu;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.kplo.schoollunchdict.HomeActivity;
@@ -20,8 +20,7 @@ import com.kplo.schoollunchdict.fragment_Teachers.ThursdayFragment_T;
 import com.kplo.schoollunchdict.fragment_Teachers.TuesdayFragment_T;
 import com.kplo.schoollunchdict.fragment_Teachers.WednesdayFragment_T;
 
-public class MyongJinDang extends AppCompatActivity implements View.OnClickListener{
-
+public class StudentsHall extends AppCompatActivity implements View.OnClickListener {
     private ViewPager mViewPager;
     private TabLayout tabLayout;
     private TextView restaurant;
@@ -44,12 +43,10 @@ public class MyongJinDang extends AppCompatActivity implements View.OnClickListe
         home_btn = (ImageView)findViewById(R.id.home_btn);
         setting_btn = (ImageView)findViewById(R.id.setting_btn);
 
-        restaurant.setText("명 진 당");
+        restaurant.setText("학 생 회 관");
 
         home_btn.setOnClickListener(this);
         setting_btn.setOnClickListener(this);
-
-
     }
 
     private void setupViewPager(ViewPager mViewPager) {
@@ -61,7 +58,6 @@ public class MyongJinDang extends AppCompatActivity implements View.OnClickListe
 
         mViewPager.setAdapter(adapter);
     }
-
     @Override
     public void onClick(View v) {
         Intent intent;

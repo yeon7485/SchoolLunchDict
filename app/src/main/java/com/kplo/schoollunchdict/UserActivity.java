@@ -72,7 +72,6 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.setting_btn:
                 intent = new Intent(this, SettingActivity.class);
                 startActivity(intent);
-                finish();
                 break;
 
             case R.id.user_btn_edit_profile:

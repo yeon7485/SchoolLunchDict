@@ -10,10 +10,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kplo.schoollunchdict.menu.MyongJinDang;
+import com.kplo.schoollunchdict.menu.StudentsHall;
+import com.kplo.schoollunchdict.menu.Teachers;
 
 public class MenuActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private TextView menu_btn_myongJinDang, menu_btn_studentsHall, menu_btn_dormSnack, menu_btn_teachers;
+    private TextView menu_btn_myongJinDang, menu_btn_studentsHall, menu_btn_teachers;
     private ImageView home_btn, setting_btn;
 
     @Override
@@ -25,14 +27,12 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         setting_btn = (ImageView) findViewById(R.id.setting_btn);
         menu_btn_myongJinDang = (TextView) findViewById(R.id.menu_btn_myongJinDang);
         menu_btn_studentsHall = (TextView) findViewById(R.id.menu_btn_studentsHall);
-        menu_btn_dormSnack = (TextView) findViewById(R.id.menu_btn_dormSnack);
         menu_btn_teachers = (TextView) findViewById(R.id.menu_btn_teachers);
 
         home_btn.setOnClickListener(this);
         setting_btn.setOnClickListener(this);
         menu_btn_myongJinDang.setOnClickListener(this);
         menu_btn_studentsHall.setOnClickListener(this);
-        menu_btn_dormSnack.setOnClickListener(this);
         menu_btn_teachers.setOnClickListener(this);
     }
 
@@ -55,10 +55,12 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.menu_btn_studentsHall:
-                break;
-            case R.id.menu_btn_dormSnack:
+                intent = new Intent(this, StudentsHall.class);
+                startActivity(intent);
                 break;
             case R.id.menu_btn_teachers:
+                intent = new Intent(this, Teachers.class);
+                startActivity(intent);
                 break;
         }
     }

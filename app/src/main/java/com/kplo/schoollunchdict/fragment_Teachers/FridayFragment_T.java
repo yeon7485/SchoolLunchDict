@@ -1,4 +1,4 @@
-package com.kplo.schoollunchdict.fragment;
+package com.kplo.schoollunchdict.fragment_Teachers;
 
 import android.os.Bundle;
 
@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import com.kplo.schoollunchdict.R;
 
 
-public class FridayFragment extends Fragment {
+public class FridayFragment_T extends Fragment {
     ViewPager viewPager;
 
     public void FridayFragment(){
