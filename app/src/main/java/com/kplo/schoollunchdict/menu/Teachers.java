@@ -23,7 +23,7 @@ import com.kplo.schoollunchdict.fragment_Teachers.WednesdayFragment_T;
 public class Teachers extends AppCompatActivity implements View.OnClickListener{
     private ViewPager mViewPager;
     private TabLayout tabLayout;
-    private TextView restaurant;
+    private TextView teachers_title;
     private ImageView home_btn, setting_btn;
     ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
@@ -39,11 +39,10 @@ public class Teachers extends AppCompatActivity implements View.OnClickListener{
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
-        restaurant = (TextView)findViewById(R.id.restaurant);
+        teachers_title = (TextView)findViewById(R.id.teachers_title);
         home_btn = (ImageView)findViewById(R.id.home_btn);
         setting_btn = (ImageView)findViewById(R.id.setting_btn);
 
-        restaurant.setText("교직원 식당");
 
         home_btn.setOnClickListener(this);
         setting_btn.setOnClickListener(this);

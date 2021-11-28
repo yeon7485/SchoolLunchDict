@@ -62,10 +62,15 @@ public class MondayFragment_T extends Fragment {
 
                         bundle.putString("lunch", makeLineText(lunchMenu)); //결과값 담아서 main Thread로 보내기
                         bundle.putString("dinner", makeLineText(dinnerMenu)); //결과값 담아서 main Thread로 보내기
-                        Message msg = handler.obtainMessage();
-                        msg.setData(bundle);
-                        handler.sendMessage(msg);
+
                     }
+                    else{
+                        bundle.putString("lunch", "등록된 식단내용이(가) 없습니다.");
+                        bundle.putString("dinner", "등록된 식단내용이(가) 없습니다.");
+                    }
+                    Message msg = handler.obtainMessage();
+                    msg.setData(bundle);
+                    handler.sendMessage(msg);
                 }catch(IOException e){
                     e.printStackTrace();
                 }

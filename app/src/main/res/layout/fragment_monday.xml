@@ -31,7 +31,7 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="5dp"
                 android:fontFamily="@font/kotra_hope"
-                android:text="등록된 식단내용이(가) 없습니다."
+                android:text="메뉴 1"
                 android:textColor="@color/title_font_color"
                 android:textSize="35sp" />
 
@@ -56,7 +56,7 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="5dp"
                 android:fontFamily="@font/kotra_hope"
-                android:text="등록된 식단내용이(가) 없습니다."
+                android:text="메뉴 2"
                 android:textColor="@color/title_font_color"
                 android:textSize="35sp" />
 
