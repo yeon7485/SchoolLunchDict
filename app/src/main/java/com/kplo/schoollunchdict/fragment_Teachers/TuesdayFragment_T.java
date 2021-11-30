@@ -40,7 +40,7 @@ public class TuesdayFragment_T extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_monday, container, false);
+        View view = inflater.inflate(R.layout.fragment_day, container, false);
         restaurant1 = (TextView) view.findViewById(R.id.mjd_mon_restaurant1);
         restaurant2 = (TextView) view.findViewById(R.id.mjd_mon_restaurant2);
         menu1 = (TextView) view.findViewById(R.id.mjd_mon_menu1);
@@ -91,6 +91,7 @@ public class TuesdayFragment_T extends Fragment {
         for(String l : list){
             result += l + "\n";
         }
+        result = result.replaceAll("&amp;", "&");
         return result;
     }
 
