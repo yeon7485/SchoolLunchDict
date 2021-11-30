@@ -15,6 +15,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".EvaluationActivity"
+            android:exported="true" />
+        <activity
             android:name=".menu.Teachers"
             android:exported="true" />
         <activity
@@ -55,7 +58,7 @@
             android:exported="true" />
         <activity
             android:name=".IntroActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true" />
