@@ -51,6 +51,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.home_btn_evaluation:
+                intent = new Intent(this, EvaluationActivity.class);
+                startActivity(intent);
                 break;
             case R.id.home_btn_rank:
                 break;

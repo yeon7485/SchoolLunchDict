@@ -1,5 +1,6 @@
 package com.kplo.schoollunchdict.fragment_Teachers;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -33,7 +34,7 @@ public class MondayFragment_T extends Fragment {
     private String URL = "https://www.mju.ac.kr/mjukr/488/subview.do";
     final Bundle bundle = new Bundle();
 
-    public void MondayFragment(){
+    public void MondayFragment() {
     }
 
     @Nullable
@@ -49,31 +50,31 @@ public class MondayFragment_T extends Fragment {
         restaurant2.setText("저녁");
 
 
+
         new Thread() {
             @Override
             public void run() {
                 //크롤링 할 구문
-                try{
-                    Document doc = Jsoup.connect(URL).get();	//URL 웹사이트에 있는 html 코드를 다 끌어오기
-                    Elements menuElement = doc.select("td.alignL");	// 메뉴 빼오기
+                try {
+                    Document doc = Jsoup.connect(URL).get();    //URL 웹사이트에 있는 html 코드를 다 끌어오기
+                    Elements menuElement = doc.select("td.alignL");    // 메뉴 빼오기
                     boolean isEmpty = menuElement.isEmpty(); //빼온 값 null체크
                     Log.d("Tag", "isNull? : " + isEmpty); //로그캣 출력
-                    if(!isEmpty) { //null값이 아니면 크롤링 실행
+                    if (!isEmpty) { //null값이 아니면 크롤링 실행
                         Element lunchMenu = doc.select("td.alignL").get(0);
                         Element dinnerMenu = doc.select("td.alignL").get(1);
 
                         bundle.putString("lunch", makeLineText(lunchMenu)); //결과값 담아서 main Thread로 보내기
                         bundle.putString("dinner", makeLineText(dinnerMenu)); //결과값 담아서 main Thread로 보내기
 
-                    }
-                    else{
+                    } else {
                         bundle.putString("lunch", "등록된 식단내용이(가) 없습니다.");
                         bundle.putString("dinner", "등록된 식단내용이(가) 없습니다.");
                     }
                     Message msg = handler.obtainMessage();
                     msg.setData(bundle);
                     handler.sendMessage(msg);
-                }catch(IOException e){
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
@@ -85,13 +86,12 @@ public class MondayFragment_T extends Fragment {
 
     private String makeLineText(Element element) {
         String[] list = element.html().split("<br>");
-
         String result = "";
         for(String l : list){
+            l = l.replaceAll("&amp;", "&");
             result += l + "\n";
             menuList.add(l);
         }
-        result = result.replaceAll("&amp;", "&");
         return result;
     }
 

@@ -24,12 +24,14 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 public class ThursdayFragment_T extends Fragment {
 
     ViewPager viewPager;
     TextView restaurant1, restaurant2, menu1, menu2;
+    public ArrayList<String> menuList = new ArrayList<>();
     private String URL = "https://www.mju.ac.kr/mjukr/488/subview.do";
     final Bundle bundle = new Bundle();
 
@@ -88,9 +90,10 @@ public class ThursdayFragment_T extends Fragment {
 
         String result = "";
         for(String l : list){
+            l = l.replaceAll("&amp;", "&");
             result += l + "\n";
+            menuList.add(l);
         }
-        result = result.replaceAll("&amp;", "&");
         return result;
     }
 
