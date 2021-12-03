@@ -29,8 +29,8 @@ public class EvaluationActivity2 extends AppCompatActivity {
     private Spinner eval_spinner_menu;
 
     private DatabaseReference database = FirebaseDatabase.getInstance().getReference("Menu");
-    private ArrayList<String> menuList;
-    private ArrayAdapter menu_adapter;
+    ArrayAdapter menu_adapter;
+    ArrayList<String> menuList;
     String result = "";
     String[] menu;
 
@@ -57,56 +57,7 @@ public class EvaluationActivity2 extends AppCompatActivity {
         }
         else if(restaurant.equals("교직원 식당")){
             menuList.clear();
-            final String[] result = {""};
-            database.child("Teachers").child(day).child("Lunch").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    for (DataSnapshot ds : snapshot.getChildren())           //여러 값을 불러와 하나씩
-                    {
-                        ArrayList<String> list = new ArrayList<>();
-                        String lunch = ds.getValue(String.class);
-                        //result[0] += lunch;
-                        String[] lunch_list = lunch.split("\\n");
-                        for (String l : lunch_list) {
-                            list.add(l.trim());
-                        }
-                        copyList(list);
-                    }
-                }
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
-            database.child("Teachers").child(day).child("Dinner").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    for (DataSnapshot ds : snapshot.getChildren())           //여러 값을 불러와 하나씩
-                    {
-                        String dinner = ds.getValue(String.class);
-                        result[1] += dinner;
-//                        String[] dinner_list = dinner.split("\\n");
-//                        for (String d : dinner_list) {
-//                            menuList.add(d.trim());
-//                        }
-                    }
-                }
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
-//            if(menuList.size() != 0){
-//                Log.v("result", menuList.get(0));
-//            }
-//            else{
-//                Log.v("result", result[0]);
-//            }
-
-            String[] list = result[0].split("\\n");
-            for(String l : list){
-                menuList.add(l.trim());
-            }
+            getTeachersMenu(day);
         }
 
 
@@ -132,60 +83,43 @@ public class EvaluationActivity2 extends AppCompatActivity {
 
     private void getTeachersMenu(String dayCode){
 
-        database.child("Teachers").child(dayCode).child("Lunch").addValueEventListener(new ValueEventListener() {
+        database.child("Teachers").child(dayCode).child("Lunch").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot ds : snapshot.getChildren())           //여러 값을 불러와 하나씩
-                {
-                    String lunch = ds.getValue(String.class);
-                    String[] lunch_list = lunch.split("\\n");
-                    for (String l : lunch_list) {
-                        menuList.add(l.trim());
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+                }
+                else {
+                    String result = String.valueOf(task.getResult().getValue());
+                    String[] list = result.split("\\n");
+                    for (String l : list) {
+                        if(!menuList.contains(l)){
+                            menuList.add(l.trim());
+                        }
+                        Log.v("lunch", l);
                     }
                 }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
+                menu_adapter.notifyDataSetChanged();
             }
         });
-        //ArrayList<String> list = new ArrayList<>();
-//        database.child("Teachers").child(dayCode).child("Lunch").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<DataSnapshot> task) {
-//                if (!task.isSuccessful()) {
-//                    Log.e("firebase", "Error getting data", task.getException());
-//                }
-//                else {
-//                    //result += String.valueOf(task.getResult().getValue());
-//                    String lunch = String.valueOf(task.getResult().getValue());
-//                    String[] lunch_list = lunch.split("\\n");
-//                    for(String l : lunch_list){
-//                        list.add(l.trim());
-//                    }
-//                }
-//            }
-//        });
-        database.child("Teachers").child(dayCode).child("Dinner").addValueEventListener(new ValueEventListener() {
+
+        database.child("Teachers").child(dayCode).child("Dinner").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot ds : snapshot.getChildren())           //여러 값을 불러와 하나씩
-                {
-                    String dinner = ds.getValue(String.class);
-                    String[] dinner_list = dinner.split("\\n");
-                    for (String d : dinner_list) {
-                        menuList.add(d.trim());
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+                }
+                else {
+                    String result = String.valueOf(task.getResult().getValue());
+                    String[] list = result.split("\\n");
+                    for (String l : list) {
+                        if(!menuList.contains(l)){
+                            menuList.add(l.trim());
+                        }
                     }
                 }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
+                menu_adapter.notifyDataSetChanged();
             }
         });
-    }
-
-    public void copyList(ArrayList<String> list){
-        this.menuList.addAll(list);
     }
 }
