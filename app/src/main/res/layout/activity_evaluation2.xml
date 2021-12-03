@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/main_color_background"
     android:orientation="vertical"
-    tools:context=".EvaluationActivity">
+    tools:context=".EvaluationActivity1">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -53,38 +53,22 @@
         android:layout_height="2dp"
         android:background="@color/title_font_color" />
 
+    <!-- 메뉴 spinner-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="70dp"
         android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_marginBottom="60dp"
-        android:weightSum="5">
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_weight="1.5"
-            android:background="@drawable/spinner_border">
-            <Spinner
-                android:id="@+id/eval_spinner_day"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:spinnerMode="dropdown" />
-
-        </LinearLayout>
-
+        android:layout_marginBottom="60dp">
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="20dp"
-            android:layout_weight="3.5"
+            android:layout_marginHorizontal="20dp"
             android:background="@drawable/spinner_border">
             <Spinner
                 android:id="@+id/eval_spinner_menu"
+                android:layout_marginHorizontal="7dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:spinnerMode="dropdown" />
@@ -118,7 +102,7 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/eval_btn"
+            android:id="@+id/eval_btn2"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

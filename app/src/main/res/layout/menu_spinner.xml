@@ -8,6 +8,6 @@
     android:gravity="center"
     android:textColor="@color/title_font_color"
     android:background="@color/main_color_background"
-    android:text="월"
+    android:text="우거지해장국"
     android:fontFamily="@font/kotra_hope"
     android:textSize="35sp" />

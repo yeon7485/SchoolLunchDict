@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_color_background"
+    android:orientation="vertical"
+    tools:context=".EvaluationActivity1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <ImageView
+            android:id="@+id/home_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            android:padding="8dp"
+            android:src="@drawable/ic_home"
+            app:tint="@color/title_font_color" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="7"
+            android:fontFamily="@font/cafe24_ssurround"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:text="메 뉴 평 가"
+            android:textColor="@color/title_font_color"
+            android:textSize="40sp" />
+
+        <ImageView
+            android:id="@+id/setting_btn"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1.5"
+            android:padding="8dp"
+            android:src="@drawable/ic_setting"
+            app:tint="@color/title_font_color" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/title_font_color" />
+
+<!-- 요일 spinner-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/kotra_hope"
+            android:text="요일 선택"
+            android:layout_marginLeft="30dp"
+            android:textColor="@color/title_font_color"
+            android:textSize="40sp" />
+
+        <LinearLayout
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/spinner_border">
+
+            <Spinner
+                android:id="@+id/eval_spinner_day"
+                android:layout_marginLeft="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:spinnerMode="dropdown" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- 요일 spinner-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginBottom="40dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/kotra_hope"
+            android:text="식당 선택"
+            android:layout_marginLeft="30dp"
+            android:textColor="@color/title_font_color"
+            android:textSize="40sp" />
+
+        <LinearLayout
+            android:layout_width="210dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/spinner_border">
+
+            <Spinner
+                android:id="@+id/eval_spinner_restaurant"
+                android:layout_marginHorizontal="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:spinnerMode="dropdown" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+<!--다음 화면 넘어가는 버튼-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/eval_btn1"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_color_pressed"
+            android:fontFamily="@font/kotra_hope"
+            android:padding="10dp"
+            android:text="메뉴 보기"
+            android:textColor="@color/main_color_background"
+            android:textSize="30sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -7,23 +7,19 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.kplo.schoollunchdict.R;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
-import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -32,77 +28,54 @@ public class ThursdayFragment_T extends Fragment {
     ViewPager viewPager;
     TextView restaurant1, restaurant2, menu1, menu2;
     public ArrayList<String> menuList = new ArrayList<>();
-    private String URL = "https://www.mju.ac.kr/mjukr/488/subview.do";
-    final Bundle bundle = new Bundle();
+    private DatabaseReference database = FirebaseDatabase.getInstance().getReference("Menu/Teachers/6");
 
-
-    public void ThursdayFragment(){
-    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_day, container, false);
-        restaurant1 = (TextView) view.findViewById(R.id.mjd_mon_restaurant1);
-        restaurant2 = (TextView) view.findViewById(R.id.mjd_mon_restaurant2);
-        menu1 = (TextView) view.findViewById(R.id.mjd_mon_menu1);
-        menu2 = (TextView) view.findViewById(R.id.mjd_mon_menu2);
+        restaurant1 = (TextView) view.findViewById(R.id.day_restaurant1);
+        restaurant2 = (TextView) view.findViewById(R.id.day_restaurant2);
+        menu1 = (TextView) view.findViewById(R.id.day_menu1);
+        menu2 = (TextView) view.findViewById(R.id.day_menu2);
 
         restaurant1.setText("점심");
         restaurant2.setText("저녁");
 
-
-        new Thread() {
-            @Override
-            public void run() {
-                //크롤링 할 구문
-                try{
-                    Document doc = Jsoup.connect(URL).get();	//URL 웹사이트에 있는 html 코드를 다 끌어오기
-                    Elements menuElement = doc.select("td.alignL");	// 메뉴 빼오기
-                    boolean isEmpty = menuElement.isEmpty(); //빼온 값 null체크
-                    Log.d("Tag", "isNull? : " + isEmpty); //로그캣 출력
-                    if(!isEmpty) { //null값이 아니면 크롤링 실행
-                        Element lunchMenu = doc.select("td.alignL").get(6);
-                        Element dinnerMenu = doc.select("td.alignL").get(7);
-
-                        bundle.putString("lunch", makeLineText(lunchMenu)); //결과값 담아서 main Thread로 보내기
-                        bundle.putString("dinner", makeLineText(dinnerMenu)); //결과값 담아서 main Thread로 보내기
-
-                    }
-                    else{
-                        bundle.putString("lunch", "등록된 식단내용이(가) 없습니다.");
-                        bundle.putString("dinner", "등록된 식단내용이(가) 없습니다.");
-                    }
-                    Message msg = handler.obtainMessage();
-                    msg.setData(bundle);
-                    handler.sendMessage(msg);
-                }catch(IOException e){
-                    e.printStackTrace();
-                }
-            }
-        }.start();
+        showLunchMenu();
+        showDinnerMenu();
 
 
         return view;
     }
-    private String makeLineText(Element element) {
-        String[] list = element.html().split("<br>");
 
-        String result = "";
-        for(String l : list){
-            l = l.replaceAll("&amp;", "&");
-            result += l + "\n";
-            menuList.add(l);
-        }
-        return result;
+
+    private void showLunchMenu(){
+        database.child("Lunch").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+                }
+                else {
+                    menu1.setText(String.valueOf(task.getResult().getValue()));
+                }
+            }
+        });
     }
 
-    Handler handler = new Handler(Looper.getMainLooper()) {
-        @Override
-        public void handleMessage(@NonNull Message msg) {
-            Bundle bundle = msg.getData();    //new Thread에서 작업한 결과물 받기
-            menu1.setText(bundle.getString("lunch"));    //받아온 데이터 textView에 출력
-            menu2.setText(bundle.getString("dinner"));    //받아온 데이터 textView에 출력
-        }
-    };
+    private void showDinnerMenu(){
+        database.child("Dinner").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+                }
+                else {
+                    menu2.setText(String.valueOf(task.getResult().getValue()));
+                }
+            }
+        });
+    }
 }

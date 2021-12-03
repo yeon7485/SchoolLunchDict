@@ -32,15 +32,15 @@ public class MyongJinDang extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.menu_detail);
+        setContentView(R.layout.menu_mjd);
 
         mViewPager = (ViewPager) findViewById(R.id.mjd_viewPager);
         setupViewPager(mViewPager);
 
-        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout = (TabLayout) findViewById(R.id.mjd_tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
-        restaurant = (TextView)findViewById(R.id.restaurant);
+        restaurant = (TextView)findViewById(R.id.mjd_title);
         home_btn = (ImageView)findViewById(R.id.home_btn);
         setting_btn = (ImageView)findViewById(R.id.setting_btn);
 

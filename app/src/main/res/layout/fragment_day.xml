@@ -15,7 +15,7 @@
             android:orientation="vertical"
             android:padding="20dp">
             <TextView
-                android:id="@+id/mjd_mon_restaurant1"
+                android:id="@+id/day_restaurant1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -26,7 +26,7 @@
                 android:textSize="45sp" />
 
             <TextView
-                android:id="@+id/mjd_mon_menu1"
+                android:id="@+id/day_menu1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -39,7 +39,7 @@
 
 
             <TextView
-                android:id="@+id/mjd_mon_restaurant2"
+                android:id="@+id/day_restaurant2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -52,7 +52,7 @@
 
 
             <TextView
-                android:id="@+id/mjd_mon_menu2"
+                android:id="@+id/day_menu2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
