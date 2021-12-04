@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,11 +24,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class EvaluationActivity1 extends AppCompatActivity {
+public class EvaluationActivity1 extends AppCompatActivity implements View.OnClickListener{
 
     private TextView tv_item_spinner;
     private Spinner eval_spinner_day, eval_spinner_restaurant;
     private Button eval_btn1;
+    private ImageView home_btn, setting_btn;
     ArrayAdapter day_adapter, restaurant_adapter;
     String[] menu = new String[6];
 
@@ -43,6 +45,9 @@ public class EvaluationActivity1 extends AppCompatActivity {
         String[] days = {"월","화","수","목","금"};
         String[] restaurant = {"명진당", "학생회관","교직원 식당"};
 
+        home_btn = (ImageView) findViewById(R.id.home_btn);
+        setting_btn = (ImageView) findViewById(R.id.setting_btn);
+
         eval_spinner_day = (Spinner) findViewById(R.id.eval_spinner_day);
         eval_spinner_restaurant = (Spinner) findViewById(R.id.eval_spinner_restaurant);
         eval_btn1 = (Button) findViewById(R.id.eval_btn1);
@@ -54,6 +59,11 @@ public class EvaluationActivity1 extends AppCompatActivity {
         restaurant_adapter = new ArrayAdapter(this, R.layout.restaurant_spinner, restaurant);
         restaurant_adapter.setDropDownViewResource(R.layout.restaurant_spinner);
         eval_spinner_restaurant.setAdapter(restaurant_adapter);
+
+        // 버튼 클릭 리스너
+        home_btn.setOnClickListener(this);
+        setting_btn.setOnClickListener(this);
+        eval_btn1.setOnClickListener(this);
 
 
         // 요일 선택 spinner
@@ -81,19 +91,6 @@ public class EvaluationActivity1 extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "식당이 선택되지 않았습니다.", Toast.LENGTH_SHORT).show();
             }
         });
-
-        eval_btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), EvaluationActivity2.class);
-                intent.putExtra("day", getDayCode(selectDay));
-                intent.putExtra("restaurant", selectRestaurant);
-                startActivity(intent);
-            }
-        });
-
-
-
     }
 
     private String getDayCode(String selectDay){
@@ -113,5 +110,27 @@ public class EvaluationActivity1 extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onClick(View v) {
+        Intent intent;
+        switch (v.getId()) {
+            case R.id.home_btn:
+                intent = new Intent(this, HomeActivity.class);
+                startActivity(intent);
+                finish();
+                break;
 
+            case R.id.setting_btn:
+                intent = new Intent(this, SettingActivity.class);
+                startActivity(intent);
+                break;
+
+            case R.id.eval_btn1:
+                intent = new Intent(getApplicationContext(), EvaluationActivity2.class);
+                intent.putExtra("day", getDayCode(selectDay));
+                intent.putExtra("restaurant", selectRestaurant);
+                startActivity(intent);
+                break;
+        }
+    }
 }
