@@ -65,6 +65,7 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.home_btn:
                 intent = new Intent(this, HomeActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 finish();
                 break;
