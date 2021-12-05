@@ -23,7 +23,7 @@
             android:layout_weight="1.5"
             android:padding="8dp"
             android:src="@drawable/ic_home"
-            app:tint="@color/title_font_color" />
+            app:tint="@color/font_color" />
 
         <TextView
             android:layout_width="0dp"
@@ -34,7 +34,7 @@
             android:gravity="center"
             android:paddingTop="5dp"
             android:text="메 뉴 평 가"
-            android:textColor="@color/title_font_color"
+            android:textColor="@color/font_color"
             android:textSize="40sp" />
 
         <ImageView
@@ -44,14 +44,14 @@
             android:layout_weight="1.5"
             android:padding="8dp"
             android:src="@drawable/ic_setting"
-            app:tint="@color/title_font_color" />
+            app:tint="@color/font_color" />
 
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@color/title_font_color" />
+        android:background="@color/font_color" />
 
     <!-- 메뉴 spinner-->
     <LinearLayout

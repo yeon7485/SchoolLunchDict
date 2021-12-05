@@ -28,7 +28,7 @@
             android:layout_marginTop="20dp"
             android:fontFamily="@font/cafe24_ssurround"
             android:text="학 식 백 과"
-            android:textColor="@color/title_font_color"
+            android:textColor="@color/font_color"
             android:textSize="50sp"
             android:textStyle="bold" />
 

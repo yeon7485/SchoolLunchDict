@@ -23,7 +23,7 @@
             android:layout_weight="1.5"
             android:padding="8dp"
             android:src="@drawable/ic_home"
-            app:tint="@color/title_font_color" />
+            app:tint="@color/font_color" />
 
         <TextView
             android:layout_width="0dp"
@@ -34,7 +34,7 @@
             android:gravity="center"
             android:paddingTop="5dp"
             android:text="학 식 백 과"
-            android:textColor="@color/title_font_color"
+            android:textColor="@color/font_color"
             android:textSize="40sp" />
 
         <ImageView
@@ -44,14 +44,14 @@
             android:layout_weight="1.5"
             android:padding="8dp"
             android:src="@drawable/ic_setting"
-            app:tint="@color/title_font_color" />
+            app:tint="@color/font_color" />
 
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@color/title_font_color" />
+        android:background="@color/font_color" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -75,7 +75,7 @@
             android:fontFamily="@font/kotra_hope"
             android:gravity="center"
             android:text="오늘의 메뉴는?"
-            android:textColor="@color/title_font_color"
+            android:textColor="@color/font_color"
             android:textSize="50sp" />
 
     </LinearLayout>
@@ -115,7 +115,7 @@
                     android:fontFamily="@font/kotra_hope"
                     android:gravity="center"
                     android:text="메뉴 평가"
-                    android:textColor="@color/title_font_color"
+                    android:textColor="@color/font_color"
                     android:textSize="35sp" />
             </LinearLayout>
 
@@ -143,7 +143,7 @@
                     android:fontFamily="@font/kotra_hope"
                     android:gravity="center"
                     android:text="메뉴 랭킹"
-                    android:textColor="@color/title_font_color"
+                    android:textColor="@color/font_color"
                     android:textSize="35sp" />
             </LinearLayout>
 
@@ -174,7 +174,7 @@
                     android:fontFamily="@font/kotra_hope"
                     android:gravity="center"
                     android:text="게시판"
-                    android:textColor="@color/title_font_color"
+                    android:textColor="@color/font_color"
                     android:textSize="35sp" />
             </LinearLayout>
 
@@ -201,7 +201,7 @@
                     android:fontFamily="@font/kotra_hope"
                     android:gravity="center"
                     android:text="내 정보"
-                    android:textColor="@color/title_font_color"
+                    android:textColor="@color/font_color"
                     android:textSize="35sp" />
             </LinearLayout>
 

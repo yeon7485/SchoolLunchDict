@@ -29,7 +29,7 @@
             android:layout_gravity="center"
             android:fontFamily="@font/cafe24_ssurround"
             android:text="학 식 백 과"
-            android:textColor="@color/title_font_color"
+            android:textColor="@color/font_color"
             android:textSize="50sp" />
 
     </LinearLayout>
@@ -49,7 +49,7 @@
             android:fontFamily="@font/kotra_hope"
             android:paddingLeft="30dp"
             android:text="이메일"
-            android:textColor="@color/title_font_color"
+            android:textColor="@color/font_color"
             android:textSize="30sp" />
 
         <EditText
@@ -71,7 +71,7 @@
             android:fontFamily="@font/kotra_hope"
             android:paddingLeft="30dp"
             android:text="비밀번호"
-            android:textColor="@color/title_font_color"
+            android:textColor="@color/font_color"
             android:textSize="30sp" />
 
         <EditText
@@ -93,7 +93,7 @@
             android:fontFamily="@font/kotra_hope"
             android:paddingLeft="30dp"
             android:text="비밀번호 확인"
-            android:textColor="@color/title_font_color"
+            android:textColor="@color/font_color"
             android:textSize="30sp" />
 
         <EditText

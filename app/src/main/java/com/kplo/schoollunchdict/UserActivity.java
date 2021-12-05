@@ -81,6 +81,8 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.user_btn_evaluation:
+                intent = new Intent(this, UserEvalActivity.class);
+                startActivity(intent);
                 break;
 
             case R.id.user_btn_favorites:
@@ -89,6 +91,7 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.user_btn_logout:
                 firebaseAuth.signOut();
                 intent = new Intent(this, LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 finish();
                 break;

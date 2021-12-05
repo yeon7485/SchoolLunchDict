@@ -18,7 +18,7 @@
             android:text="제목"
             android:fontFamily="@font/kotra_hope"
             android:textSize="40sp"
-            android:textColor="@color/title_font_color"/>
+            android:textColor="@color/font_color"/>
 
         <TextView
             android:id="@+id/post_tv_contents"
@@ -28,7 +28,7 @@
             android:text="내용"
             android:fontFamily="@font/kotra_hope"
             android:textSize="30sp"
-            android:textColor="@color/title_font_color"/>
+            android:textColor="@color/font_color"/>
 
         <LinearLayout
             android:layout_width="wrap_content"

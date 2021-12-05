@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:padding="5dp"
     android:gravity="center"
-    android:textColor="@color/title_font_color"
+    android:textColor="@color/font_color"
     android:background="@color/main_color_background"
     android:text="우거지해장국"
     android:fontFamily="@font/kotra_hope"

@@ -14,7 +14,7 @@
     <color name="main_color_red">#d62828</color>
     <color name="main_color_navy">#003049</color>
     <color name="main_color_yellow">#fcbf49</color>
-    <color name="title_font_color">#4a0c0c</color>
+    <color name="font_color">#4a0c0c</color>
     <color name="titleBar_background">#f9f7f0</color>
 
 </resources>
