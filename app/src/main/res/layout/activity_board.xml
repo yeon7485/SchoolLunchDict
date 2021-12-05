@@ -67,7 +67,7 @@
             android:layout_marginVertical="5dp"
             android:hint="검색어를 입력하세요."
             android:layout_marginLeft="10dp"
-            android:background="@drawable/borderline"
+            android:background="@drawable/border_line"
             android:padding="10dp"
             android:textSize="30sp" />
 
@@ -91,7 +91,7 @@
         android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+            android:id="@+id/board_recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 

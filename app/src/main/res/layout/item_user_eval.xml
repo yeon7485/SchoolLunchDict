@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/main_color_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/user_eval_tv_menu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginVertical="10dp"
+            android:text="생선까스&amp;타르S  -  5점"
+            android:fontFamily="@font/kotra_hope"
+            android:layout_marginLeft="7dp"
+            android:textSize="35sp"
+            android:textColor="@color/font_color"/>
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1.5dp"
+        android:layout_marginVertical="5dp"
+        android:src="@drawable/dash_line"
+        android:layerType="software"/>
+
+</LinearLayout>

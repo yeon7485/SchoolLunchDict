@@ -61,34 +61,69 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
             android:fontFamily="@font/kotra_hope"
             android:gravity="center"
             android:text="내가 평가한 메뉴"
             android:textColor="@color/font_color"
             android:textSize="50sp" />
 
-
-        <com.github.mikephil.charting.charts.PieChart
-            android:id="@+id/user_eval_chart"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_marginHorizontal="40dp"/>
-
-
-        <TextView
-            android:id="@+id/user_eval_tv_menu"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/kotra_hope"
-            android:gravity="center"
-            android:text="제육볶음 : 5점"
-            android:textColor="@color/font_color"
-            android:textSize="35sp" />
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginBottom="30dp">
+
+            <EditText
+                android:id="@+id/user_eval_et_search"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/border_line"
+                android:fontFamily="@font/kotra_hope"
+                android:hint="검색어를 입력하세요."
+                android:padding="10dp"
+                android:textSize="25sp" />
+
+            <ImageView
+                android:id="@+id/search_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:layout_marginLeft="5dp"
+                android:padding="5dp"
+                android:src="@drawable/ic_search"
+                app:tint="@color/font_color" />
+
+        </LinearLayout>
+
+
+        <!--        <com.github.mikephil.charting.charts.PieChart-->
+        <!--            android:id="@+id/user_eval_chart"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="300dp"-->
+        <!--            android:layout_marginHorizontal="40dp"/>-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="30dp"
+            android:paddingBottom="30dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/user_eval_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </LinearLayout>
+
 
     </LinearLayout>
 

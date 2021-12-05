@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Database;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -23,14 +22,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class BoardActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private RecyclerView recyclerView;
+    private RecyclerView board_recyclerView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    private ArrayList<Post> arrayList;
+    private ArrayList<Post> postList;
     private ArrayList<Post> resultList;
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
@@ -44,11 +42,11 @@ public class BoardActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_board);
 
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        recyclerView.setHasFixedSize(true);
+        board_recyclerView = (RecyclerView) findViewById(R.id.board_recyclerView);
+        board_recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-        arrayList = new ArrayList<>();
+        board_recyclerView.setLayoutManager(layoutManager);
+        postList = new ArrayList<>();
 
         post_tv_title = (TextView) findViewById(R.id.post_tv_title);
         post_tv_contents = (TextView) findViewById(R.id.post_tv_contents);
@@ -63,8 +61,8 @@ public class BoardActivity extends AppCompatActivity implements View.OnClickList
         databaseReference = database.getReference("Board");
         getBoard();
 
-        adapter = new PostAdapter(arrayList, this);
-        recyclerView.setAdapter(adapter);
+        adapter = new PostAdapter(postList, this);
+        board_recyclerView.setAdapter(adapter);
 
         home_btn.setOnClickListener(this);
         write_btn.setOnClickListener(this);
@@ -99,10 +97,10 @@ public class BoardActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 //파이어베이스 데이터베이스의 데이터를 받아오는곳
-                arrayList.clear(); //초기화
+                postList.clear(); //초기화
                 for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                     Post post = snapshot1.getValue(Post.class); //만들어뒀던 list 객체에 데이터 담기
-                    arrayList.add(post);
+                    postList.add(post);
                 }
                 adapter.notifyDataSetChanged(); // 리스트 저장 및 새로고침
             }
@@ -119,9 +117,9 @@ public class BoardActivity extends AppCompatActivity implements View.OnClickList
         Toast.makeText(getApplicationContext(), "search", Toast.LENGTH_SHORT).show();
         resultList = new ArrayList<>();
         if (searchText.length() == 0) {
-            resultList.addAll(arrayList);
+            resultList.addAll(postList);
         } else {
-            for (Post post : arrayList) {
+            for (Post post : postList) {
                 if (post.getTitle().contains(searchText)) {
                     resultList.add(post);
                 }
@@ -135,8 +133,8 @@ public class BoardActivity extends AppCompatActivity implements View.OnClickList
         }
 
         PostAdapter resultAdapter = new PostAdapter(resultList, this);
-        recyclerView.removeAllViewsInLayout();
-        recyclerView.setAdapter(resultAdapter);
+        board_recyclerView.removeAllViewsInLayout();
+        board_recyclerView.setAdapter(resultAdapter);
     }
 
 

@@ -156,6 +156,7 @@ public class EvaluationActivity2 extends AppCompatActivity implements View.OnCli
         });
     }
 
+    // 평가한 것 DB에 저장
     public void evaluate(String menu, int rate) {
         String uid = firebaseAuth.getUid();
         databaseRate.child(uid).child("Eval").child(menu).setValue(rate);

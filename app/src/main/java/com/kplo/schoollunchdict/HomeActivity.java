@@ -21,7 +21,7 @@ import java.io.IOException;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private ImageView home_btn, setting_btn, home_btn_menu, home_btn_evaluation, home_btn_rank, home_btn_community, home_btn_user;
+    private ImageView home_btn, setting_btn, home_btn_menu, home_btn_evaluation, home_btn_ranking, home_btn_community, home_btn_user;
     private DatabaseReference database;
     String URL_T = "https://www.mju.ac.kr/mjukr/488/subview.do";
 
@@ -34,7 +34,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         setting_btn = (ImageView) findViewById(R.id.setting_btn);
         home_btn_menu = (ImageView) findViewById(R.id.home_btn_menu);
         home_btn_evaluation = (ImageView) findViewById(R.id.home_btn_evaluation);
-        home_btn_rank = (ImageView) findViewById(R.id.home_btn_rank);
+        home_btn_ranking = (ImageView) findViewById(R.id.home_btn_ranking);
         home_btn_community = (ImageView) findViewById(R.id.home_btn_community);
         home_btn_user = (ImageView) findViewById(R.id.home_btn_user);
 
@@ -53,7 +53,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         setting_btn.setOnClickListener(this);
         home_btn_menu.setOnClickListener(this);
         home_btn_evaluation.setOnClickListener(this);
-        home_btn_rank.setOnClickListener(this);
+        home_btn_ranking.setOnClickListener(this);
         home_btn_community.setOnClickListener(this);
         home_btn_user.setOnClickListener(this);
 
@@ -78,7 +78,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 intent = new Intent(this, EvaluationActivity1.class);
                 startActivity(intent);
                 break;
-            case R.id.home_btn_rank:
+            case R.id.home_btn_ranking:
                 break;
             case R.id.home_btn_community:
                 break;
