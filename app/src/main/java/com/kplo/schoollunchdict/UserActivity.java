@@ -20,9 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class UserActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private ImageView home_btn, setting_btn;
     private TextView user_tv_nickname, user_tv_email;
-    private TextView user_btn_edit_profile, user_btn_evaluation, user_btn_favorites, user_btn_logout;
 
     private FirebaseAuth firebaseAuth;
     private DatabaseReference database;
@@ -32,14 +30,15 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
-        home_btn = (ImageView) findViewById(R.id.home_btn);
-        setting_btn = (ImageView) findViewById(R.id.setting_btn);
+        ImageView home_btn = (ImageView) findViewById(R.id.home_btn);
+        ImageView setting_btn = (ImageView) findViewById(R.id.setting_btn);
+        TextView user_btn_edit_profile = (TextView) findViewById(R.id.user_btn_edit_profile);
+        TextView user_btn_evaluation = (TextView) findViewById(R.id.user_btn_evaluation);
+        TextView user_btn_favorites = (TextView) findViewById(R.id.user_btn_favorites);
+        TextView user_btn_logout = (TextView) findViewById(R.id.user_btn_logout);
+
         user_tv_nickname = (TextView) findViewById(R.id.user_tv_nickname);
         user_tv_email = (TextView) findViewById(R.id.user_tv_email);
-        user_btn_edit_profile = (TextView) findViewById(R.id.user_btn_edit_profile);
-        user_btn_evaluation = (TextView) findViewById(R.id.user_btn_evaluation);
-        user_btn_favorites = (TextView) findViewById(R.id.user_btn_favorites);
-        user_btn_logout = (TextView) findViewById(R.id.user_btn_logout);
 
         // 데이터베이스 연결
         firebaseAuth = FirebaseAuth.getInstance();

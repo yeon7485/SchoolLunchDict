@@ -8,6 +8,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.InputType;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,19 +28,19 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class UserEvalActivity extends AppCompatActivity implements View.OnClickListener{
+public class UserEvalActivity extends AppCompatActivity implements View.OnClickListener {
 
 
-    private ImageView home_btn, setting_btn, search_btn;
     private EditText user_eval_et_search;
     private RecyclerView user_eval_recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     ArrayList<String> menuList, searchList;
     UserEvalAdapter adapter;
 
-    private DatabaseReference database = FirebaseDatabase.getInstance().getReference("Users");
-    private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    private final DatabaseReference database = FirebaseDatabase.getInstance().getReference("Users");
+    private final FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
 
     @Override
@@ -45,10 +48,10 @@ public class UserEvalActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_eval);
 
-        home_btn = (ImageView) findViewById(R.id.home_btn);
-        setting_btn = (ImageView) findViewById(R.id.setting_btn);
-        search_btn = (ImageView) findViewById(R.id.search_btn);
+        ImageView home_btn = (ImageView) findViewById(R.id.home_btn);
+        ImageView setting_btn = (ImageView) findViewById(R.id.setting_btn);
         user_eval_et_search = (EditText) findViewById(R.id.user_eval_et_search);
+        user_eval_et_search.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
 
         user_eval_recyclerView = (RecyclerView) findViewById(R.id.user_eval_recyclerView);
         user_eval_recyclerView.setHasFixedSize(true);
@@ -57,25 +60,46 @@ public class UserEvalActivity extends AppCompatActivity implements View.OnClickL
 
 
         menuList = new ArrayList<>();
+        searchList = new ArrayList<>();
 
         getUserEvalMenu();
 
+        home_btn.setOnClickListener(this);
+        setting_btn.setOnClickListener(this);
 
         adapter = new UserEvalAdapter(menuList, this);
         user_eval_recyclerView.setAdapter(adapter);
 
+        user_eval_et_search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String searchText = user_eval_et_search.getText().toString().trim();
+                search(searchText);
+            }
+        });
 
 
     }
 
-    private void getUserEvalMenu(){
+    private void getUserEvalMenu() {
         String uid = firebaseAuth.getUid();
         database.child(uid).child("Eval").addListenerForSingleValueEvent(new ValueEventListener() {
             int i;
+
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 menuList.clear();
-                for(DataSnapshot data : snapshot.getChildren()){
+                for (DataSnapshot data : snapshot.getChildren()) {
                     String menuRate = "";
                     String menu = data.getKey();
                     String rating = data.getValue().toString();
@@ -91,6 +115,24 @@ public class UserEvalActivity extends AppCompatActivity implements View.OnClickL
             }
         });
 
+    }
+
+    //검색기능(순차 탐색)
+    private void search(String searchText) {
+        searchList.clear();
+        // 문자 입력이 없을때는 모든 데이터를 보여준다
+        if (searchText.length() == 0) {
+            searchList.addAll(menuList);
+            // 문자 입력을 할때
+        } else {
+            for (String str : menuList) {
+                if (str.contains(searchText)) {
+                    searchList.add(str);
+                }
+            }
+        }
+
+        adapter.searchList(searchList);
     }
 
     @Override
@@ -109,9 +151,6 @@ public class UserEvalActivity extends AppCompatActivity implements View.OnClickL
                 startActivity(intent);
                 break;
 
-            case R.id.search_btn:
-
-                break;
         }
     }
 
