@@ -16,5 +16,6 @@
     <color name="main_color_yellow">#fcbf49</color>
     <color name="font_color">#4a0c0c</color>
     <color name="titleBar_background">#f9f7f0</color>
+    <color name="image_heart_pink">#FF7190</color>
 
 </resources>

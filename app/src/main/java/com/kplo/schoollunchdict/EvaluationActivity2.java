@@ -3,6 +3,7 @@ package com.kplo.schoollunchdict;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,8 +20,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -29,14 +32,15 @@ public class EvaluationActivity2 extends AppCompatActivity implements View.OnCli
     private Button eval_btn2;
     private Spinner eval_spinner_menu;
     private RatingBar eval_ratingBar;
-    private ImageView home_btn, setting_btn;
+    private ImageView home_btn, setting_btn, favorite_btn;
 
     private DatabaseReference databaseMenu = FirebaseDatabase.getInstance().getReference("Menu");
-    private DatabaseReference databaseRate = FirebaseDatabase.getInstance().getReference("Users");
+    private DatabaseReference databaseUsers = FirebaseDatabase.getInstance().getReference("Users");
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     ArrayAdapter menu_adapter;
     ArrayList<String> menuList;
-    String menu;
+    ArrayList<String> favoritesList;
+    String selectMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,9 +52,11 @@ public class EvaluationActivity2 extends AppCompatActivity implements View.OnCli
         eval_btn2 = (Button) findViewById(R.id.eval_btn2);
         eval_spinner_menu = (Spinner) findViewById(R.id.eval_spinner_menu);
         eval_ratingBar = (RatingBar) findViewById(R.id.eval_ratingBar);
+        favorite_btn = (ImageView) findViewById(R.id.favorite_btn);
 
         menuList = new ArrayList<>();
-
+        favoritesList = new ArrayList<>();
+        getFavorites();
 
         Intent intent = getIntent();
         String day = intent.getStringExtra("day");
@@ -76,7 +82,14 @@ public class EvaluationActivity2 extends AppCompatActivity implements View.OnCli
         eval_spinner_menu.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                menu = menuList.get(position);
+                selectMenu = menuList.get(position);
+                Log.v("check Favorite", String.valueOf(checkFavorite(selectMenu)));
+                if(checkFavorite(selectMenu)){
+                    favorite_btn.setBackgroundResource(R.drawable.ic_full_heart);
+                }
+                else{
+                    favorite_btn.setBackgroundResource(R.drawable.ic_empty_heart);
+                }
                 //Toast.makeText(getApplicationContext(), menuList.get(position), Toast.LENGTH_SHORT).show();
             }
 
@@ -90,6 +103,7 @@ public class EvaluationActivity2 extends AppCompatActivity implements View.OnCli
         home_btn.setOnClickListener(this);
         setting_btn.setOnClickListener(this);
         eval_btn2.setOnClickListener(this);
+        favorite_btn.setOnClickListener(this);
 
     }
 
@@ -111,8 +125,22 @@ public class EvaluationActivity2 extends AppCompatActivity implements View.OnCli
 
             case R.id.eval_btn2:
                 int rating = (int) eval_ratingBar.getRating();
-                evaluate(menu, rating);
+                evaluate(selectMenu, rating);
                 break;
+
+            case R.id.favorite_btn:
+                if (checkFavorite(selectMenu)) {
+                    deleteFavorite();
+                    favorite_btn.setBackgroundResource(R.drawable.ic_empty_heart);
+                    Toast.makeText(getApplicationContext(), selectMenu + " 즐겨찾기 삭제", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    setFavorite();
+                    favorite_btn.setBackgroundResource(R.drawable.ic_full_heart);
+                    Toast.makeText(getApplicationContext(), selectMenu + " 즐겨찾기 완료!", Toast.LENGTH_SHORT).show();
+                }
+                break;
+
         }
     }
 
@@ -157,10 +185,48 @@ public class EvaluationActivity2 extends AppCompatActivity implements View.OnCli
     }
 
     // 평가한 것 DB에 저장
-    public void evaluate(String menu, int rate) {
+    private void evaluate(String menu, int rate) {
         String uid = firebaseAuth.getUid();
-        databaseRate.child(uid).child("Eval").child(menu).setValue(rate);
+        databaseUsers.child(uid).child("Eval").child(menu).setValue(rate);
         Toast.makeText(getApplicationContext(), menu + ": " + rate + "점으로 평가 완료!", Toast.LENGTH_SHORT).show();
     }
+
+
+    private void getFavorites() {
+        String uid = firebaseAuth.getUid();
+        databaseUsers.child(uid).child("Favorites").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                favoritesList.clear();
+                for (DataSnapshot data : snapshot.getChildren()) {
+                    String f_menu = data.getKey();
+                    favoritesList.add(f_menu);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void setFavorite() {
+        String uid = firebaseAuth.getUid();
+        databaseUsers.child(uid).child("Favorites").child(selectMenu).setValue("true");
+        getFavorites();
+    }
+
+    private void deleteFavorite(){
+        String uid = firebaseAuth.getUid();
+        databaseUsers.child(uid).child("Favorites").child(selectMenu).removeValue();
+        getFavorites();
+    }
+
+    private boolean checkFavorite(String menu){
+        if(favoritesList.contains(menu)) return true;
+        else return false;
+    }
+
 
 }

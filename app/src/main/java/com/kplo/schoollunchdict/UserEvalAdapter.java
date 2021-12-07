@@ -51,7 +51,6 @@ public class UserEvalAdapter extends RecyclerView.Adapter<UserEvalAdapter.UserEv
 
     @Override
     public int getItemCount() {
-
         return (menuList != null ? menuList.size() : 0);
     }
 
