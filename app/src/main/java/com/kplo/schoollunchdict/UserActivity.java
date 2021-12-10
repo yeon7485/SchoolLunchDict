@@ -86,6 +86,8 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.user_btn_favorites:
+                intent = new Intent(this, FavoritesActivity.class);
+                startActivity(intent);
                 break;
 
             case R.id.user_btn_logout:
