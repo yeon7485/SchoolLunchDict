@@ -30,7 +30,6 @@ public class BoardActivity extends AppCompatActivity implements View.OnClickList
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<Post> postList;
     private ArrayList<Post> resultList;
-    private FirebaseDatabase database;
     private DatabaseReference databaseReference;
 
     private TextView post_tv_title, post_tv_contents, post_tv_nickname, post_tv_time;
@@ -48,17 +47,17 @@ public class BoardActivity extends AppCompatActivity implements View.OnClickList
         board_recyclerView.setLayoutManager(layoutManager);
         postList = new ArrayList<>();
 
-        post_tv_title = (TextView) findViewById(R.id.post_tv_title);
-        post_tv_contents = (TextView) findViewById(R.id.post_tv_contents);
-        post_tv_nickname = (TextView) findViewById(R.id.post_tv_nickname);
-        post_tv_time = (TextView) findViewById(R.id.post_tv_time);
+        post_tv_title = (TextView) findViewById(R.id.post_item_tv_title);
+        post_tv_contents = (TextView) findViewById(R.id.post_item_tv_contents);
+        post_tv_nickname = (TextView) findViewById(R.id.post_item_tv_nickname);
+        post_tv_time = (TextView) findViewById(R.id.post_item_tv_time);
         home_btn = (ImageView) findViewById(R.id.home_btn);
         write_btn = (ImageView) findViewById(R.id.write_btn);
         search_btn = (ImageView) findViewById(R.id.search_btn);
         board_et_search = (EditText) findViewById(R.id.board_et_search);
 
-        database = FirebaseDatabase.getInstance();
-        databaseReference = database.getReference("Board");
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("Board");
         getBoard();
 
         adapter = new PostAdapter(postList, this);
@@ -82,6 +81,8 @@ public class BoardActivity extends AppCompatActivity implements View.OnClickList
                 finish();
                 break;
             case R.id.write_btn:
+                intent = new Intent(this, WritePostActivity.class);
+                startActivity(intent);
                 break;
             case R.id.search_btn:
                 String searchText = board_et_search.getText().toString().trim();

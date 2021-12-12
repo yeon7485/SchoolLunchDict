@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_color_background"
+    android:orientation="vertical"
+    tools:context=".WritePostActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="30dp"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/kotra_hope"
+            android:text="제목"
+            android:textColor="@color/font_color"
+            android:textSize="30sp" />
+
+        <EditText
+            android:id="@+id/write_post_et_title"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:padding="10dp"
+            android:fontFamily="@font/kotra_hope"
+            android:background="@drawable/border_line_no_radius"
+            android:hint="제목을 입력하세요."
+            android:textSize="25sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/kotra_hope"
+            android:text="내용"
+            android:textColor="@color/font_color"
+            android:textSize="30sp" />
+
+        <EditText
+            android:id="@+id/write_post_et_contents"
+            android:layout_width="match_parent"
+            android:layout_height="330dp"
+            android:padding="10dp"
+            android:fontFamily="@font/kotra_hope"
+            android:background="@drawable/border_line_no_radius"
+            android:hint="내용을 입력하세요."
+            android:textSize="25sp" />
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/write_post_btn"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_color_pressed"
+            android:fontFamily="@font/kotra_hope"
+            android:padding="10dp"
+            android:text="완 료"
+            android:textColor="@color/main_color_background"
+            android:textSize="30sp" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

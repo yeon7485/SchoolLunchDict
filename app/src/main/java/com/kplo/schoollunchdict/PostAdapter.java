@@ -48,10 +48,10 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         public PostViewHolder(@NonNull View itemView) {
 
             super(itemView);
-            this.post_tv_title = (TextView) itemView.findViewById(R.id.post_tv_title);
-            this.post_tv_contents = (TextView) itemView.findViewById(R.id.post_tv_contents);
-            this.post_tv_nickname = (TextView) itemView.findViewById(R.id.post_tv_nickname);
-            this.post_tv_time = (TextView) itemView.findViewById(R.id.post_tv_time);
+            this.post_tv_title = (TextView) itemView.findViewById(R.id.post_item_tv_title);
+            this.post_tv_contents = (TextView) itemView.findViewById(R.id.post_item_tv_contents);
+            this.post_tv_nickname = (TextView) itemView.findViewById(R.id.post_item_tv_nickname);
+            this.post_tv_time = (TextView) itemView.findViewById(R.id.post_item_tv_time);
         }
     }
 }

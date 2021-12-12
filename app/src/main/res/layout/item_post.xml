@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="@color/main_color_background">
 
@@ -12,7 +12,7 @@
         android:layout_margin="10dp">
 
         <TextView
-            android:id="@+id/post_tv_title"
+            android:id="@+id/post_item_tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="제목"
@@ -21,7 +21,7 @@
             android:textColor="@color/font_color"/>
 
         <TextView
-            android:id="@+id/post_tv_contents"
+            android:id="@+id/post_item_tv_contents"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -37,7 +37,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/post_tv_nickname"
+                android:id="@+id/post_item_tv_nickname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="닉네임"
@@ -47,7 +47,7 @@
                 android:textColor="@color/main_color_orange"/>
 
             <TextView
-                android:id="@+id/post_tv_time"
+                android:id="@+id/post_item_tv_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="시간"

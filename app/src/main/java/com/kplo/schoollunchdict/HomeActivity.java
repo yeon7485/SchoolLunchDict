@@ -21,7 +21,7 @@ import java.io.IOException;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private ImageView home_btn, setting_btn, home_btn_menu, home_btn_evaluation, home_btn_ranking, home_btn_community, home_btn_user;
+    private ImageView home_btn, setting_btn, home_btn_menu, home_btn_evaluation, home_btn_ranking, home_btn_board, home_btn_user;
     private DatabaseReference database;
     String URL_T = "https://www.mju.ac.kr/mjukr/488/subview.do";
 
@@ -35,7 +35,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         home_btn_menu = (ImageView) findViewById(R.id.home_btn_menu);
         home_btn_evaluation = (ImageView) findViewById(R.id.home_btn_evaluation);
         home_btn_ranking = (ImageView) findViewById(R.id.home_btn_ranking);
-        home_btn_community = (ImageView) findViewById(R.id.home_btn_community);
+        home_btn_board = (ImageView) findViewById(R.id.home_btn_board);
         home_btn_user = (ImageView) findViewById(R.id.home_btn_user);
 
         new Thread(){
@@ -54,7 +54,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         home_btn_menu.setOnClickListener(this);
         home_btn_evaluation.setOnClickListener(this);
         home_btn_ranking.setOnClickListener(this);
-        home_btn_community.setOnClickListener(this);
+        home_btn_board.setOnClickListener(this);
         home_btn_user.setOnClickListener(this);
 
     }
@@ -80,7 +80,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.home_btn_ranking:
                 break;
-            case R.id.home_btn_community:
+            case R.id.home_btn_board:
+                intent = new Intent(this, BoardActivity.class);
+                startActivity(intent);
                 break;
             case R.id.home_btn_user:
                 intent = new Intent(this, UserActivity.class);

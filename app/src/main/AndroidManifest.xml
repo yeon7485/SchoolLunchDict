@@ -16,6 +16,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
+            android:name=".WritePostActivity"
+            android:exported="true" />
+        <activity
             android:name=".FavoritesActivity"
             android:exported="true" />
         <activity
@@ -23,9 +26,7 @@
             android:exported="true" />
         <activity
             android:name=".UserEvalActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".EvaluationActivity2"
             android:exported="true" />
