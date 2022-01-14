@@ -1,13 +1,19 @@
 package com.kplo.schoollunchdict;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Post {
     private String title;
     private String contents;
     private String nickname;
-    private String time;
+    private String date;
 
-    public Post(){
-
+    public Post(String title, String contents, String nickname, String date){
+        this.title = title;
+        this.contents = contents;
+        this.nickname = nickname;
+        this.date = date;
     }
 
     public String getTitle() {
@@ -34,11 +40,12 @@ public class Post {
         this.nickname = nickname;
     }
 
-    public String getTime() {
-        return time;
+    public String getDate() {
+        return date;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setDate(String date) {
+
+        this.date = date;
     }
 }

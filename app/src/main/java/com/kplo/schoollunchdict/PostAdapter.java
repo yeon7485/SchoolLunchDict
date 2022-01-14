@@ -34,7 +34,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         holder.post_tv_title.setText(arrayList.get(position).getTitle());
         holder.post_tv_contents.setText(arrayList.get(position).getContents());
         holder.post_tv_nickname.setText(arrayList.get(position).getNickname());
-        holder.post_tv_time.setText(arrayList.get(position).getTime());
+        holder.post_tv_date.setText(arrayList.get(position).getDate());
     }
 
     @Override
@@ -43,7 +43,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
     }
 
     public class PostViewHolder extends RecyclerView.ViewHolder {
-        TextView post_tv_title, post_tv_contents, post_tv_nickname, post_tv_time;
+        TextView post_tv_title, post_tv_contents, post_tv_nickname, post_tv_date;
 
         public PostViewHolder(@NonNull View itemView) {
 
@@ -51,7 +51,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             this.post_tv_title = (TextView) itemView.findViewById(R.id.post_item_tv_title);
             this.post_tv_contents = (TextView) itemView.findViewById(R.id.post_item_tv_contents);
             this.post_tv_nickname = (TextView) itemView.findViewById(R.id.post_item_tv_nickname);
-            this.post_tv_time = (TextView) itemView.findViewById(R.id.post_item_tv_time);
+            this.post_tv_date = (TextView) itemView.findViewById(R.id.post_item_tv_date);
         }
     }
 }

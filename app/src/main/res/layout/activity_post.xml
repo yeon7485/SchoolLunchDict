@@ -111,7 +111,7 @@
             android:fontFamily="@font/kotra_hope"
             android:padding="10dp"
             android:gravity="right"
-            android:text="2021-12-13 00:07:30"
+            android:text="2021-12-13 00:07"
             android:textColor="@color/font_color"
             android:textSize="25sp" />
 

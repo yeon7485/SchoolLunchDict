@@ -50,7 +50,7 @@ public class BoardActivity extends AppCompatActivity implements View.OnClickList
         post_tv_title = (TextView) findViewById(R.id.post_item_tv_title);
         post_tv_contents = (TextView) findViewById(R.id.post_item_tv_contents);
         post_tv_nickname = (TextView) findViewById(R.id.post_item_tv_nickname);
-        post_tv_time = (TextView) findViewById(R.id.post_item_tv_time);
+        post_tv_time = (TextView) findViewById(R.id.post_item_tv_date);
         home_btn = (ImageView) findViewById(R.id.home_btn);
         write_btn = (ImageView) findViewById(R.id.write_btn);
         search_btn = (ImageView) findViewById(R.id.search_btn);

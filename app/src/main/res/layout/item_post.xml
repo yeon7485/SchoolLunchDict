@@ -47,7 +47,7 @@
                 android:textColor="@color/main_color_orange"/>
 
             <TextView
-                android:id="@+id/post_item_tv_time"
+                android:id="@+id/post_item_tv_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="시간"
