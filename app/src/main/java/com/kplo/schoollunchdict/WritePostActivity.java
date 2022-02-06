@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -54,9 +55,17 @@ public class WritePostActivity extends AppCompatActivity {
                 if(!isEmpty(title, contents)){
                     writePost(title, contents);
                     Log.v("write success", "title: " + title + ", contents: " + contents);
-                    Intent intent = new Intent(WritePostActivity.this, BoardActivity.class);
-                    startActivity(intent);
-                    finish();
+                    new Handler().postDelayed(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            //딜레이 후 시작할 코드 작성
+                            Intent intent = new Intent(WritePostActivity.this, BoardActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    }, 600);// 0.6초 정도 딜레이를 준 후 시작
                 }
                 else{
                     Toast.makeText(getApplicationContext(), title + ", contents: " + contents, Toast.LENGTH_SHORT).show();

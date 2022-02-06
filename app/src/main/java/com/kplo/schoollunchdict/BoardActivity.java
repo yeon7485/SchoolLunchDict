@@ -61,7 +61,6 @@ public class BoardActivity extends AppCompatActivity implements View.OnClickList
         getBoard();
 
         adapter = new PostAdapter(postList, BoardActivity.this);
-        Log.v("postlist", String.valueOf(postList.size()));
         board_recyclerView.setAdapter(adapter);
         board_recyclerView.invalidate();
 
