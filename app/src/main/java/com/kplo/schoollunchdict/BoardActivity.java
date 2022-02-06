@@ -56,12 +56,14 @@ public class BoardActivity extends AppCompatActivity implements View.OnClickList
         search_btn = (ImageView) findViewById(R.id.search_btn);
         board_et_search = (EditText) findViewById(R.id.board_et_search);
 
-
         databaseReference = FirebaseDatabase.getInstance().getReference("Board");
+
         getBoard();
 
-        adapter = new PostAdapter(postList, this);
+        adapter = new PostAdapter(postList, BoardActivity.this);
+        Log.v("postlist", String.valueOf(postList.size()));
         board_recyclerView.setAdapter(adapter);
+        board_recyclerView.invalidate();
 
         home_btn.setOnClickListener(this);
         write_btn.setOnClickListener(this);
@@ -93,17 +95,24 @@ public class BoardActivity extends AppCompatActivity implements View.OnClickList
 
 
     private void getBoard(){
+        Toast.makeText(this, "get board!", Toast.LENGTH_SHORT).show();
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 //파이어베이스 데이터베이스의 데이터를 받아오는곳
-                postList.clear(); //초기화
+                postList.clear();
                 for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                     Post post = snapshot1.getValue(Post.class); //만들어뒀던 list 객체에 데이터 담기
-                    postList.add(post);
+                    if(post != null){
+                        postList.add(post);
+                    }
+                    else{
+                        Log.e("BoardActivity", "post is null.");
+                    }
                 }
                 adapter.notifyDataSetChanged(); // 리스트 저장 및 새로고침
+
             }
 
             @Override

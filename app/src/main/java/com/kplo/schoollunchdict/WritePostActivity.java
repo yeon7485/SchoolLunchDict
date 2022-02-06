@@ -30,7 +30,6 @@ public class WritePostActivity extends AppCompatActivity {
     private DatabaseReference databaseBoard;
     private DatabaseReference databaseUsers;
     private FirebaseAuth firebaseAuth;
-    private int count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +53,8 @@ public class WritePostActivity extends AppCompatActivity {
 
                 if(!isEmpty(title, contents)){
                     writePost(title, contents);
-                    Intent intent = new Intent(getApplicationContext(), BoardActivity.class);
+                    Log.v("write success", "title: " + title + ", contents: " + contents);
+                    Intent intent = new Intent(WritePostActivity.this, BoardActivity.class);
                     startActivity(intent);
                     finish();
                 }
@@ -70,11 +70,21 @@ public class WritePostActivity extends AppCompatActivity {
         String uid = firebaseAuth.getUid();
         SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         String format = s.format(new Date());
-        Log.v("error", "title: " + title + ", contents: " + contents);
 
-        Post post = new Post(title, contents, getNickname(uid), format);
-        databaseBoard.child(String.valueOf(count)).push().setValue(post);
-        count = count + 1;
+        databaseUsers.child(uid).child("nickname").addListenerForSingleValueEvent(new ValueEventListener() {
+            String nickname = "";
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                nickname = snapshot.getValue(String.class);
+                Post post = new Post(title, contents, nickname, format);
+                databaseBoard.push().setValue(post);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.w("TAG", "Failed to read value.", error.toException());
+            }
+        });
+
     }
 
     private boolean isEmpty(String title, String contents){
@@ -85,20 +95,4 @@ public class WritePostActivity extends AppCompatActivity {
         return check;
     }
 
-    private String getNickname(String uid){
-        final String[] nickname = {""};
-        databaseUsers.child(uid).child("nickname").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                 nickname[0] = snapshot.getValue(String.class);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Log.w("TAG", "Failed to read value.", error.toException());
-            }
-        });
-
-        return nickname[0];
-    }
 }
