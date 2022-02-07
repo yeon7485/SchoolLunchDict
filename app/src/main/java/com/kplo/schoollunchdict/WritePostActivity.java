@@ -55,12 +55,13 @@ public class WritePostActivity extends AppCompatActivity {
                 if(!isEmpty(title, contents)){
                     writePost(title, contents);
                     Log.v("write success", "title: " + title + ", contents: " + contents);
+                    // 업데이트 된 후에 글 목록을 가져올 수 있게 딜레이 주기
                     new Handler().postDelayed(new Runnable()
                     {
                         @Override
                         public void run()
                         {
-                            //딜레이 후 시작할 코드 작성
+                            //딜레이 후 시작할 코드
                             Intent intent = new Intent(WritePostActivity.this, BoardActivity.class);
                             startActivity(intent);
                             finish();

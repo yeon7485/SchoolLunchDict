@@ -1,9 +1,10 @@
 package com.kplo.schoollunchdict;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Post {
+public class Post  implements Serializable {
     private String title;
     private String contents;
     private String nickname;

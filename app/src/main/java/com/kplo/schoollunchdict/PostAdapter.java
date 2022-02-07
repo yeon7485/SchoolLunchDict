@@ -1,6 +1,7 @@
 package com.kplo.schoollunchdict;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,7 +43,11 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         return (arrayList != null ? arrayList.size() : 0);
     }
 
-    public class PostViewHolder extends RecyclerView.ViewHolder {
+    public Post getItem(int position){
+        return arrayList != null ? arrayList.get(position) : null;
+    }
+
+    public class PostViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView post_tv_title, post_tv_contents, post_tv_nickname, post_tv_date;
 
         public PostViewHolder(@NonNull View itemView) {
@@ -52,6 +57,15 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             this.post_tv_contents = (TextView) itemView.findViewById(R.id.post_item_tv_contents);
             this.post_tv_nickname = (TextView) itemView.findViewById(R.id.post_item_tv_nickname);
             this.post_tv_date = (TextView) itemView.findViewById(R.id.post_item_tv_date);
+        }
+
+        @Override
+        public void onClick(View v) {
+            int pos = getAdapterPosition();
+
+            Intent intent = new Intent(v.getContext(), PostActivity.class);
+            intent.putExtra("item", getItem(pos));
+            v.getContext().startActivity(intent);
         }
     }
 }
