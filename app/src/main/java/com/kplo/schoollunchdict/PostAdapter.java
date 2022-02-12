@@ -2,6 +2,7 @@ package com.kplo.schoollunchdict;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,7 +48,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         return arrayList != null ? arrayList.get(position) : null;
     }
 
-    public class PostViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class PostViewHolder extends RecyclerView.ViewHolder{
         TextView post_tv_title, post_tv_contents, post_tv_nickname, post_tv_date;
 
         public PostViewHolder(@NonNull View itemView) {
@@ -57,15 +58,18 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             this.post_tv_contents = (TextView) itemView.findViewById(R.id.post_item_tv_contents);
             this.post_tv_nickname = (TextView) itemView.findViewById(R.id.post_item_tv_nickname);
             this.post_tv_date = (TextView) itemView.findViewById(R.id.post_item_tv_date);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int pos = getAdapterPosition();
+                    Log.v("position", String.valueOf(pos));
+                    Intent intent = new Intent(v.getContext(), PostActivity.class);
+                    intent.putExtra("item", getItem(pos));
+                    v.getContext().startActivity(intent);
+                }
+            });
         }
 
-        @Override
-        public void onClick(View v) {
-            int pos = getAdapterPosition();
-
-            Intent intent = new Intent(v.getContext(), PostActivity.class);
-            intent.putExtra("item", getItem(pos));
-            v.getContext().startActivity(intent);
-        }
     }
 }
