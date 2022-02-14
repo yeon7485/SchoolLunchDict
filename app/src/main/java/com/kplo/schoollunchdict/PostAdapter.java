@@ -16,10 +16,12 @@ import java.util.ArrayList;
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder> {
 
     private ArrayList<Post> arrayList;
+    private ArrayList<String> keyList;
     private Context context;
 
-    public PostAdapter(ArrayList<Post> arrayList, Context context) {
+    public PostAdapter(ArrayList<Post> arrayList, ArrayList<String> keyList, Context context) {
         this.arrayList = arrayList;
+        this.keyList = keyList;
         this.context = context;
     }
 
@@ -48,6 +50,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         return arrayList != null ? arrayList.get(position) : null;
     }
 
+
     public class PostViewHolder extends RecyclerView.ViewHolder{
         TextView post_tv_title, post_tv_contents, post_tv_nickname, post_tv_date;
 
@@ -66,6 +69,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
                     Log.v("position", String.valueOf(pos));
                     Intent intent = new Intent(v.getContext(), PostActivity.class);
                     intent.putExtra("item", getItem(pos));
+                    intent.putExtra("key", keyList.get(pos));
                     v.getContext().startActivity(intent);
                 }
             });

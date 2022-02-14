@@ -30,6 +30,8 @@ public class BoardActivity extends AppCompatActivity implements View.OnClickList
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<Post> postList;
     private ArrayList<Post> resultList;
+    private ArrayList<String> keyList;
+    private ArrayList<String> resultKeyList;
     private DatabaseReference databaseReference;
 
     private TextView post_tv_title, post_tv_contents, post_tv_nickname, post_tv_time;
@@ -46,6 +48,7 @@ public class BoardActivity extends AppCompatActivity implements View.OnClickList
         layoutManager = new LinearLayoutManager(this);
         board_recyclerView.setLayoutManager(layoutManager);
         postList = new ArrayList<>();
+        keyList = new ArrayList<>();
 
         post_tv_title = (TextView) findViewById(R.id.post_item_tv_title);
         post_tv_contents = (TextView) findViewById(R.id.post_item_tv_contents);
@@ -60,7 +63,7 @@ public class BoardActivity extends AppCompatActivity implements View.OnClickList
 
         getBoard();
 
-        adapter = new PostAdapter(postList, BoardActivity.this);
+        adapter = new PostAdapter(postList, keyList, BoardActivity.this);
         board_recyclerView.setAdapter(adapter);
         board_recyclerView.invalidate();
 
@@ -101,10 +104,13 @@ public class BoardActivity extends AppCompatActivity implements View.OnClickList
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 //파이어베이스 데이터베이스의 데이터를 받아오는곳
                 postList.clear();
+                keyList.clear();
                 for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                     Post post = snapshot1.getValue(Post.class); //만들어뒀던 list 객체에 데이터 담기
+                    String key = snapshot1.getKey();
                     if(post != null){
                         postList.add(post);
+                        keyList.add(key);
                     }
                     else{
                         Log.e("BoardActivity", "post is null.");
@@ -125,23 +131,30 @@ public class BoardActivity extends AppCompatActivity implements View.OnClickList
     private void search(String searchText){
         Toast.makeText(getApplicationContext(), "search", Toast.LENGTH_SHORT).show();
         resultList = new ArrayList<>();
+        resultKeyList = new ArrayList<>();
         if (searchText.length() == 0) {
             resultList.addAll(postList);
+            resultKeyList.addAll(keyList);
         } else {
-            for (Post post : postList) {
+            for (int i = 0; i < postList.size(); i++) {
+                Post post = postList.get(i);
+                String key = keyList.get(i);
                 if (post.getTitle().contains(searchText)) {
                     resultList.add(post);
+                    resultKeyList.add(key);
                 }
                 else if(post.getContents().contains(searchText)){
                     resultList.add(post);
+                    resultKeyList.add(key);
                 }
                 else if(post.getNickname().contains(searchText)){
                     resultList.add(post);
+                    resultKeyList.add(key);
                 }
             }
         }
 
-        PostAdapter resultAdapter = new PostAdapter(resultList, this);
+        PostAdapter resultAdapter = new PostAdapter(resultList, resultKeyList, this);
         board_recyclerView.removeAllViewsInLayout();
         board_recyclerView.setAdapter(resultAdapter);
     }

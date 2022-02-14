@@ -175,7 +175,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/comment_tv_nickname"
+                    android:id="@+id/comment_nickname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/kotra_hope"
@@ -184,7 +184,7 @@
                     android:textSize="25sp" />
 
                 <TextView
-                    android:id="@+id/comment_tv_contents"
+                    android:id="@+id/comment_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
