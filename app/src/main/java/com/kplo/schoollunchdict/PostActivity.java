@@ -3,13 +3,16 @@ package com.kplo.schoollunchdict;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActionBar;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +29,7 @@ public class PostActivity extends AppCompatActivity implements View.OnClickListe
     private ImageView post_edit_btn;
     private EditText comment_et;
     private Button comment_btn;
+    private LinearLayout container;
     private Post item;
     private String key;
 
@@ -45,8 +49,9 @@ public class PostActivity extends AppCompatActivity implements View.OnClickListe
         post_edit_btn = (ImageView) findViewById(R.id.post_edit_btn);
         comment_et = (EditText) findViewById(R.id.comment_et);
         comment_btn = (Button) findViewById(R.id.comment_btn);
-        comment_nickname = (TextView) findViewById(R.id.comment_nickname);
         comment_tv = (TextView) findViewById(R.id.comment_tv);
+
+        container = (LinearLayout) findViewById(R.id.comment_layout);
 
         databaseBoard = FirebaseDatabase.getInstance().getReference("Board");
         databaseUsers = FirebaseDatabase.getInstance().getReference("Users");
@@ -111,10 +116,22 @@ public class PostActivity extends AppCompatActivity implements View.OnClickListe
         // post처럼 comment item 만들어야됨
         getNickname();
         String comment = comment_et.getText().toString().trim();
-        String nickname = comment_nickname.getText().toString();
-        comment_tv.setText(comment);
-        databaseBoard.child(key).child("Comment").child(nickname).setValue(comment);
+        String nickname = comment_tv.getText().toString();
+        comment = nickname + " :  " + comment;
 
+        TextView tv = new TextView(this);
+        tv.setText(comment);
+        tv.setTextSize(25);
+        tv.setTextColor(0x4a0c0c);
+        Typeface typeFace = Typeface.createFromAsset(getAssets(), "font/kotra_hope.ttf");
+        tv.setTypeface(typeFace);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
+        tv.setLayoutParams(lp);
+        container.addView(tv);
+        comment_tv.setText("");
+        comment_et.setText("");
+
+        databaseBoard.child(key).child("Comment").setValue(comment);
     }
 
     public void getNickname(){
@@ -123,7 +140,7 @@ public class PostActivity extends AppCompatActivity implements View.OnClickListe
         databaseUsers.child(uid).child("nickname").addListenerForSingleValueEvent(new ValueEventListener() {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String nickname = snapshot.getValue(String.class);
-                comment_nickname.setText(nickname);
+                comment_tv.setText(nickname);
             }
 
             @Override

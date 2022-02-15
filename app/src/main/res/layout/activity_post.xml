@@ -164,34 +164,26 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="18dp">
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <LinearLayout
+                android:id="@+id/comment_layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/comment_nickname"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/kotra_hope"
-                    android:text="닉네임 : "
-                    android:textColor="@color/font_color"
-                    android:textSize="25sp" />
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp">
 
                 <TextView
                     android:id="@+id/comment_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
                     android:fontFamily="@font/kotra_hope"
-                    android:text="댓글 내용"
+                    android:text=""
                     android:textColor="@color/font_color"
-                    android:textSize="25sp" />
+                    android:textSize="1sp" />
             </LinearLayout>
 
         </ScrollView>
